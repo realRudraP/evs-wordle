@@ -6,6 +6,7 @@ import random
 origins=["https://evs-wordle.netlify.app/"]
 
 words = ["Waste","Reuse","Reduce","Recycle","Landfill","Mercury","Battery","Toxic"]
+wlengths=[5,5,6,7,8,7,7,5]
 app=FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -27,7 +28,7 @@ def root():
     indeces=makeRandom()
     lengths=[]
     for i in range(0,3):
-        lengths.append(len(words[indeces[i]]))
+        lengths.append(wlengths[indeces[i]])
     return {"indeces":indeces,"lengths":lengths}
 
 @app.post("/checkguess")
