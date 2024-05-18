@@ -16,7 +16,6 @@ fetch(apiURL+"indeces")
         indeces=data.indeces
         lengths=data.lengths
         generateBoard(lengths[0])
-        alert(lengths)
     })
 }
 let guessesRemaining=6
@@ -140,7 +139,6 @@ function handleButton(event){
               }
             }
             if (data.correct) {
-              alert("You win!");
               wins++;
               toastr["success"]("Congratulations!","Correct answer!")
               if(wordNumber<3){
