@@ -16,6 +16,7 @@ fetch(apiURL+"indeces")
         indeces=data.indeces
         lengths=data.lengths
         generateBoard(lengths[0])
+        alert(lengths)
     })
 }
 let guessesRemaining=6
