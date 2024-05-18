@@ -1,11 +1,11 @@
 from fastapi import FastAPI,Request
 from fastapi.middleware.cors import CORSMiddleware
 import random
-import os
 
-origins=["http://127.0.0.1:5500"]
 
-words = os.environ.get('evs_words')
+origins=["https://evs-wordle.netlify.app/"]
+
+words = ["Waste","Reuse","Reduce","Recycle","Landfill","Mercury","Battery","Toxic"]
 app=FastAPI()
 app.add_middleware(
     CORSMiddleware,

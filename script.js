@@ -1,4 +1,4 @@
-const apiURL="https://codebox-z34r.onrender.com"
+const apiURL="https://evs-wordle.onrender.com/"
 let indeces=[]
 let lengths=[]
 let fetched=0
