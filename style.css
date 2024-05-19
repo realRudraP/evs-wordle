@@ -66,3 +66,20 @@ h1,h3{
     cursor: pointer;
     text-transform: uppercase;
 }
+
+#unametext{
+    width: 100%;
+}
+#usernamein{
+    display: block;
+}
+.centre{
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    margin-left: 40%;
+}
+
+#wlcmback{
+    visibility: hidden;
+}
