@@ -1,4 +1,4 @@
-let apiURL="https://evs-wordle.onrender.com"
+let apiURL="https://evs-wordle.onrender.com/"
 if(localStorage.getItem("firstTime")==="false"){
     document.getElementById("name").innerHTML=localStorage.getItem("username")
     document.getElementById("wlcmback").style.visibility="visible"
