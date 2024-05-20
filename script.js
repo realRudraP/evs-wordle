@@ -13,6 +13,11 @@ let wins=0
 let timeCont=1
 let timeFun
 let usedGuesses=0
+let loggedin=localStorage.getItem("firstTime")
+
+if(loggedin==="false"){
+  window.location.replace("/index.html")
+}
 
 document.getElementById("username").innerHTML=localStorage.getItem("username")
 
