@@ -1,4 +1,4 @@
-if(localStorage.getItem("firstTime")==="false"){
+if(localStorage.getItem("firstTime")!="false"){
     document.getElementById("name").innerHTML=localStorage.getItem("username")
     document.getElementById("wlcmback").style.visibility="visible"
     document.getElementById("usernamein").style.visibility="hidden"
