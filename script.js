@@ -1,4 +1,4 @@
-const apiURL="http://127.0.0.1:8000/"
+const apiURL="https://evs-wordle.onrender.com/"
 const words=["Waste","Reuse","Reduce","Recycle","Landfill","Mercury","Battery","Toxic"]
 let indeces=[]
 let lengths=[]
@@ -14,7 +14,7 @@ let timeCont=1
 let timeFun
 let usedGuesses=0
 let loggedin=localStorage.getItem("firstTime")
-
+export {apiURL}
 if(loggedin==="false"){
   window.location.replace("/index.html")
 }

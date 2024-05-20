@@ -1,11 +1,10 @@
 const leaderboardData = document.getElementById("leaderboardData");
-let APIurl="127.0.0.1:8000/getscores"
-let players = []
-const url = "http://127.0.0.1:8000/getscores"; 
+let APIurl="https://evs-wordle.onrender.com/getscores"
+let players = [] 
 
 async function getPlayers() {
   try {
-    const response = await fetch(url);
+    const response = await fetch("https://evs-wordle.onrender.com/getscores");
     if (!response.ok) {
       throw new Error(`Error fetching players: ${response.status}`);
     }
@@ -17,23 +16,30 @@ async function getPlayers() {
   }
 }
 
-getPlayers(); // Call the function to fetch the data
 function compareScores(a, b) {
+   console.log("I");
     return b.score - a.score;
   }
 
 players.sort(compareScores);
 
-function displayLeaderboard(playerData) {
+async function displayLeaderboard() {
+  try {
+    const players = await getPlayers();  
+    console.log("Players:", players);
+  } catch (error) {
+    console.error(error);
+  }
+  console.log("Ran!")
   let rank = 1;
-  for (const player of playerData) {
+  for (const player of players) {
     const tableRow = document.createElement("tr");
     const rankCell = document.createElement("td");
     const nameCell = document.createElement("td");
     const scoreCell = document.createElement("td");
 
     rankCell.textContent = rank;
-    nameCell.textContent = player.name;
+    nameCell.textContent = player.playerName;
     scoreCell.textContent = player.score;
 
     tableRow.appendChild(rankCell);
@@ -47,4 +53,4 @@ function displayLeaderboard(playerData) {
 }
 
 // Display the leaderboard data
-displayLeaderboard(players);
+displayLeaderboard();

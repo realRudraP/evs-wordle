@@ -21,7 +21,7 @@ app.add_middleware(
 def wakeup():
     m=requests.get(goodmorning)
     message=m.json()
-    return {"message":message["content"]}
+    return {"message":message["content"],"author":message["author"]}
 
 @app.post("/postscore")
 async def check(request:Request):
@@ -38,5 +38,7 @@ async def check(request:Request):
 def returnScores():
     return results
     
-    
-        
+@app.get("/clearboard")
+def clearBoard():
+    results.clear()
+    return {"Status":"Success"}        
