@@ -14,8 +14,8 @@ let timeCont=1
 let timeFun
 let usedGuesses=0
 let loggedin=localStorage.getItem("firstTime")
-export {apiURL}
-if(loggedin==="false"){
+
+if(loggedin!="false"){
   window.location.replace("/index.html")
 }
 
