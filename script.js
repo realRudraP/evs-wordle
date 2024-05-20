@@ -257,6 +257,7 @@ function checkGuess(){
         body: JSON.stringify(stats),
       })
       alert("Thanks for playing! Check your score on the next screen")
+      window.location.replace("/leaderboard.html")
   }
 }
   
