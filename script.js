@@ -15,7 +15,7 @@ let timeFun
 let usedGuesses=0
 let loggedin=localStorage.getItem("firstTime")
 
-if(loggedin==="false"){
+if(loggedin!="false"){
   window.location.replace("/index.html")
 }
 
