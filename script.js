@@ -194,6 +194,7 @@ function checkGuess(){
     }
     guess+= letter;
   }
+  
   let out=""
   let answer=words[indeces[wordNumber]].toLowerCase()
   guess=guess.toLowerCase()
@@ -240,6 +241,14 @@ function checkGuess(){
     nextLetter=0
     if(guessesRemaining<=0){
       toastr["info"]("You ran out of guesses! Try next time", "Guesses finished!")
+      if(wordNumber<3){
+        clearAndResetBoard();
+        wordNumber++;
+        generateBoard(lengths[wordNumber])
+          }else{
+          wordNumber++;
+          }
+      
     }
   }
   document.getElementById("score").innerHTML=wins;

@@ -30,6 +30,9 @@ async def check(request:Request):
     score+=(data["wins"]*100)
     score-=(data["guesses"]*2)
     score-=(data["time_taken"]*0.5)
+    if(score<0):
+        score=0
+    
     res={"playerName":data["playerName"],"score":score}
     results.append(res)
     return res
