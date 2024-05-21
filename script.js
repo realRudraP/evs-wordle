@@ -202,12 +202,10 @@ function checkGuess(){
   for (let i = 0; i < lengths[wordNumber]; i++) {
       if(guess[i]==answer[i]){
         out+="a"
-        break;
       }
       else if(answer.includes(guess[i])){
         out+="b"
         correct=0
-        break;
       }else{
         out+="c"
         correct=0
