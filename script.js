@@ -1,5 +1,5 @@
 const apiURL="https://evs-wordle.onrender.com/"
-const words=["Waste","Reuse","Reduce","Recycle","Landfill","Mercury","Battery","Toxic"]
+const words=["Waste","Reuse","Reduce","Recycle","Landfill","Phthalates","Battery","Toxic"]
 let indeces=[]
 let lengths=[]
 let generated=0
