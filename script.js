@@ -1,5 +1,5 @@
 const apiURL="https://evs-wordle.onrender.com/"
-const words=["Waste","Reuse","Reduce","Recycle","Landfill","Phthalates","Battery","Toxic"]
+const words=["Waste","Reuse","Reduce","Recycle","Toxic","Safety","Health","Leach","Silver","Refine","Policy"]
 let indeces=[]
 let lengths=[]
 let generated=0
@@ -24,7 +24,7 @@ document.getElementById("username").innerHTML=localStorage.getItem("username")
 if(!generated){
   let count=0
   while(count<3){
-  let rn=Math.floor(Math.random()*7)
+  let rn=Math.floor(Math.random()*(words.length))
   if(indeces.includes(rn)){
     continue;
   }else{
