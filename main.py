@@ -45,6 +45,5 @@ def returnScores():
     
 @app.get("/clearboard")
 def clearBoard():
-
     results.clear()
     return {"Status":"Success"}        
