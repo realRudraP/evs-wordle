@@ -1,10 +1,9 @@
-from fastapi import FastAPI,Request
+from fastapi import FastAPI,Request,Response,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import random
 import requests
+
+hashed_pwd="591480a6ffe66bae1081808a65f9924c96f96e5ef92f3aef751f954e99cd7c3f"
 goodmorning="https://api.quotable.io/random"
-
-
 origins=["https://evs-wordle.netlify.app/"]
 
 
@@ -16,7 +15,10 @@ app.add_middleware(
     allow_origins=["*"],
     allow_methods=["*"],
 )
-
+@app.get("/auth")
+def nope():
+    raise HTTPException(status_code=401,detail="Not auth")
+    
 @app.get("/wakeup")
 def wakeup():
     m=requests.get(goodmorning)
@@ -43,5 +45,6 @@ def returnScores():
     
 @app.get("/clearboard")
 def clearBoard():
+
     results.clear()
     return {"Status":"Success"}        

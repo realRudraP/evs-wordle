@@ -30,7 +30,6 @@ async function displayLeaderboard() {
   } catch (error) {
     console.error(error);
   }
-  console.log("Ran!")
   let rank = 1;
   for (const player of players) {
     const tableRow = document.createElement("tr");
@@ -54,3 +53,21 @@ async function displayLeaderboard() {
 
 // Display the leaderboard data
 displayLeaderboard();
+
+async function clearLeaderboard(){
+  let password=prompt("Enter your password here")
+  const req={"pwd":password}
+  try{
+    const response=fetch("https://evs-wordle.onrender.com/getscores", {
+      method: "POST",
+      body: JSON.stringify(req),
+    })
+    if(!response.ok){
+      throw new Error(response.statusText)
+    }else{
+      alert("Deleted sucessfully!")
+    }
+  }catch(error){
+    console.log("Error")
+  }
+}
