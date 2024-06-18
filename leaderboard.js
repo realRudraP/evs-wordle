@@ -59,8 +59,7 @@ async function clearLeaderboard(){
   const req={"pwd":password}
   try{
     const response=fetch("https://evs-wordle.onrender.com/clearboard", {
-      method: "POST",
-      body: JSON.stringify(req),
+      method: "GET",
     })
     if(!response.ok){
       throw new Error(response.statusText)
