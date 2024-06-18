@@ -58,7 +58,7 @@ async function clearLeaderboard(){
   let password=prompt("Enter your password here")
   const req={"pwd":password}
   try{
-    const response=fetch("https://evs-wordle.onrender.com/getscores", {
+    const response=fetch("https://evs-wordle.onrender.com/clearboard", {
       method: "POST",
       body: JSON.stringify(req),
     })
