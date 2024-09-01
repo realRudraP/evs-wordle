@@ -1,70 +1,57 @@
 const leaderboardData = document.getElementById("leaderboardData");
-let APIurl="https://evs-wordle.onrender.com/getscores"
-let players = [] 
+let APIurl = "https://evs-wordle.onrender.com/getscores";
+let players = [];
 
 async function getPlayers() {
   try {
-    const response = await fetch("https://evs-wordle.onrender.com/getscores");
+    const response = await fetch(APIurl);
     if (!response.ok) {
       throw new Error(`Error fetching players: ${response.status}`);
     }
     const data = await response.json();
-    players = data; 
-    console.log(players);
+    return data;
   } catch (error) {
     console.error("Error:", error);
+    return [];
   }
 }
 
 function compareScores(a, b) {
-   console.log("I");
-    return b.score - a.score;
-  }
-
-players.sort(compareScores);
+  return b.score - a.score;
+}
 
 async function displayLeaderboard() {
   try {
-    const players = await getPlayers();  
+    players = await getPlayers();
     console.log("Players:", players);
+    
+    players.sort(compareScores);
+
+    leaderboardData.innerHTML = ''; // Clear existing data
+
+    let rank = 1;
+    for (const player of players) {
+      const tableRow = document.createElement("tr");
+      const rankCell = document.createElement("td");
+      const nameCell = document.createElement("td");
+      const scoreCell = document.createElement("td");
+
+      rankCell.textContent = rank;
+      nameCell.textContent = player.playerName;
+      scoreCell.textContent = player.score;
+
+      tableRow.appendChild(rankCell);
+      tableRow.appendChild(nameCell);
+      tableRow.appendChild(scoreCell);
+
+      leaderboardData.appendChild(tableRow);
+
+      rank++;
+    }
   } catch (error) {
-    console.error(error);
-  }
-  let rank = 1;
-  for (const player of players) {
-    const tableRow = document.createElement("tr");
-    const rankCell = document.createElement("td");
-    const nameCell = document.createElement("td");
-    const scoreCell = document.createElement("td");
-
-    rankCell.textContent = rank;
-    nameCell.textContent = player.playerName;
-    scoreCell.textContent = player.score;
-
-    tableRow.appendChild(rankCell);
-    tableRow.appendChild(nameCell);
-    tableRow.appendChild(scoreCell);
-
-    leaderboardData.appendChild(tableRow);
-
-    rank++;
+    console.error("Error displaying leaderboard:", error);
   }
 }
 
 // Display the leaderboard data
 displayLeaderboard();
-
-async function clearLeaderboard(){
-  try{
-    const response=fetch("https://evs-wordle.onrender.com/clearboard", {
-      method: "GET",
-    })
-    if(!response.ok){
-      throw new Error(response.statusText)
-    }else{
-      alert("Deleted sucessfully!")
-    }
-  }catch(error){
-    console.log("Error")
-  }
-}

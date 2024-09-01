@@ -1,8 +1,9 @@
 from fastapi import FastAPI,Request,Response,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import requests
+import hashlib
 
-hashed_pwd="591480a6ffe66bae1081808a65f9924c96f96e5ef92f3aef751f954e99cd7c3f"
+
 goodmorning="https://api.quotable.io/random"
 origins=["https://evs-wordle.netlify.app/"]
 
@@ -15,11 +16,8 @@ app.add_middleware(
     allow_origins=["*"],
     allow_methods=["*"],
 )
-@app.get("/auth")
-def nope():
-    raise HTTPException(status_code=401,detail="Not auth")
     
-@app.get("/wakeup")
+@app.get("/wakeup") # Method to keep backend server running while players play (shuts down in 15 mins of no activity)
 def wakeup():
     m=requests.get(goodmorning)
     message=m.json()
@@ -30,8 +28,8 @@ async def check(request:Request):
     data = await request.json()
     score=0
     score+=(data["wins"]*100)
-    score-=(data["guesses"]*2)
-    score-=(data["time_taken"]*0.5)
+    score-=(data["guesses"]*0.5)
+    score-=(data["time_taken"]*0.05)
     if(score<0):
         score=0
     
@@ -42,8 +40,4 @@ async def check(request:Request):
 @app.get("/getscores")
 def returnScores():
     return results
-    
-@app.get("/clearboard")
-def clearBoard():
-    results.clear()
-    return {"Status":"Success"}        
+   
