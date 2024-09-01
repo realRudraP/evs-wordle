@@ -9,19 +9,17 @@
 </head>
 <body>
     <h1>EVS Wordle</h1>
-    <div id="usernamein">
-          <label id="unametext">Choose a username:</label>
-          <input type="text" id="username" placeholder="Enter username">
-    
-    <button class="centre" onclick="sumbitUsername()">Enter</button>
+    <div id="usernamein" class="flex-container">
+          <div class="centre-horizontally"><label id="unametext">Choose a username:</label></div>
+          <div class="centre-horizontally"><input type="text" id="username" placeholder="Enter username"></div>
+          <div class="centre-horizontally"><button onclick="sumbitUsername()">Enter</button></div>
     </div>
     <div id="wlcmback">
         <h2 style="margin-left: 25%;">Welcome back <span id="name"></span> !</h2>
         <a href="wordle.html"><button class="centre">Go to game</button></a>
     </div>
     <br><br>
-    <h3>Check the leaderboard!</h3>
-    <a href="leaderboard.html"><button class="centre">Leaderboard</button></a>
+    <a href="leaderboard.html"><button class="centre-horizontally">Go to the Leaderboard</button></a>
     <script src="main.js"></script>        
     <script src="sw.js"></script>
 </body>
