@@ -47,8 +47,8 @@ function updateTime(){
     elapsed=currentTime-startTime;
     const minutes = Math.floor(elapsed / (1000 * 60)); // Convert to minutes
     const seconds = elapsed % (1000 * 60) / 1000; 
-    document.getElementById("mins").innerHTML=minutes.toString().padStart(2,"0");
-    document.getElementById("sec").innerHTML=seconds.toFixed().padStart(2,"0");
+    document.getElementById("mins").textContent=minutes.toString().padStart(2,"0");
+    document.getElementById("sec").textContent=seconds.toFixed().padStart(2,"0");
 }
 
 function startBoard(WORD_LENGTH){
@@ -172,7 +172,7 @@ function handleButton(event){
                 toastr["info"]("You ran out of guesses! Try next time", "Guesses finished!")
               }
             }
-            document.getElementById("score").innerHTML=wins;
+            document.getElementById("score").textContent=wins;
             if(wordNumber===3){
                 alert("Thanks for playing! Check your score on the next screen")
             }
@@ -251,7 +251,7 @@ function checkGuess(){
       
     }
   }
-  document.getElementById("score").innerHTML=wins;
+  document.getElementById("score").textContent=wins;
   if(wordNumber===3){
       timeCont=0
       clearInterval(timeFun)
