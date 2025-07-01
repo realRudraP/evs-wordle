@@ -19,7 +19,7 @@ if(loggedin!="false"){
   window.location.replace("/index.html")
 }
 
-document.getElementById("username").innerHTML=localStorage.getItem("username")
+document.getElementById("username").textContent=localStorage.getItem("username")
 
 if(!generated){
   let count=0
